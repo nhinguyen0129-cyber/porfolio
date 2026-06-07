@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An immersive digital portfolio — a marketer's traces through campaigns, brands, and stories that matter.">
+  <title>Traces — A Marketer's Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CANVAS: particles -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- SOUND TOGGLE -->
+  <button class="sound-toggle" id="sound-toggle" aria-label="Toggle ambient sound">
+    <span class="sound-icon sound-on">♪</span>
+    <span class="sound-icon sound-off" style="display:none">♩</span>
+    <span class="sound-label">SOUND</span>
+  </button>
+
+  <!-- NAV DOTS -->
+  <nav class="nav-dots" id="nav-dots" aria-label="Section navigation">
+    <button class="dot active" data-section="0" aria-label="Intro"></button>
+    <button class="dot" data-section="1" aria-label="Project 1"></button>
+    <button class="dot" data-section="2" aria-label="Project 2"></button>
+    <button class="dot" data-section="3" aria-label="Project 3"></button>
+    <button class="dot" data-section="4" aria-label="Project 4"></button>
+    <button class="dot" data-section="5" aria-label="Project 5"></button>
+  </nav>
+
+  <!-- SECTION COUNTER -->
+  <div class="section-counter" id="section-counter">
+    <span class="counter-current">01</span>
+    <span class="counter-sep">/</span>
+    <span class="counter-total">06</span>
+  </div>
+
+  <!-- SCROLL HINT -->
+  <div class="scroll-hint" id="scroll-hint">
+    <span>Scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
+
+  <!-- MAIN ROOMS -->
+  <main class="rooms-wrapper" id="rooms-wrapper">
+
+    <!-- ======= ROOM 0: INTRO ======= -->
+    <section class="room room-intro active" id="room-0" data-room="0">
+      <div class="room-bg-image bg-intro"></div>
+      <div class="room-overlay"></div>
+
+      <div class="intro-content">
+        <div class="intro-eyebrow reveal-up">Portfolio · 2024</div>
+        <h1 class="intro-title reveal-up delay-1">
+          <span class="title-line">Những dấu</span>
+          <span class="title-line italic">vết tôi để lại</span>
+        </h1>
+        <p class="intro-subtitle reveal-up delay-2">
+          Campaigns. Brands. Stories.<br>
+          <span class="en-sub">Each project — a trace of thinking, feeling, and making.</span>
+        </p>
+        <div class="intro-name reveal-up delay-3">
+          <span class="name-label">by</span>
+          <span class="name-text">Your Name</span>
+          <span class="name-role">/ Senior Marketer</span>
+        </div>
+        <button class="enter-btn reveal-up delay-4" id="enter-btn">
+          <span>Enter the experience</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1v14M1 8l7 7 7-7" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
+      </div>
+      <div class="pulse-ring"></div>
+    </section>
+
+    <!-- ======= ROOM 1: CAMPAIGN STRATEGY ======= -->
+    <section class="room room-project" id="room-1" data-room="1"
+      data-color="#c9a96e"
+      data-chart-labels="Jan,Feb,Mar,Apr,May,Jun"
+      data-chart-values="18,35,52,74,89,100"
+      data-chart-label2="Conversion"
+      data-chart-values2="5,9,14,18,22,28"
+      data-gallery-theme="gold">
+      <div class="room-bg-image bg-room1"></div>
+      <div class="room-overlay"></div>
+      <div class="room-glow" style="--glow-color:#c9a96e"></div>
+
+      <!-- LEFT: Project Info -->
+      <div class="project-panel-left">
+        <div class="project-meta">
+          <div class="project-index">01</div>
+          <div class="project-category reveal-left delay-1">Campaign Strategy</div>
+        </div>
+        <div class="project-content">
+          <h2 class="project-title reveal-up delay-1">Brand Launch<br><span class="italic">Campaign</span></h2>
+          <p class="project-vn reveal-up delay-2">Chiến dịch ra mắt thương hiệu</p>
+          <div class="project-divider reveal-up delay-2"></div>
+          <p class="project-desc reveal-up delay-3">A 360° integrated campaign that introduced [Brand Name] to the Vietnamese market. From strategy and insight to creative direction and media planning — built to resonate, not just reach.</p>
+          <div class="project-stats reveal-up delay-4">
+            <div class="stat-item"><span class="stat-number">2.4M</span><span class="stat-label">Impressions</span></div>
+            <div class="stat-item"><span class="stat-number">18%</span><span class="stat-label">Conversion lift</span></div>
+            <div class="stat-item"><span class="stat-number">3 mo</span><span class="stat-label">Timeline</span></div>
+          </div>
+          <div class="project-tags reveal-up delay-4">
+            <span class="tag">Strategy</span><span class="tag">ATL</span><span class="tag">Media Planning</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Gallery + Chart -->
+      <div class="project-panel-right">
+        <div class="gallery-block reveal-right delay-2">
+          <div class="gallery-label">Campaign Gallery</div>
+          <div class="gallery-strip">
+            <div class="gallery-item" data-index="0" style="--g:linear-gradient(135deg,#2a1a00,#6b3d00,#c9a96e44)">
+              <div class="gallery-img-inner" style="background:linear-gradient(135deg,#1a1000 0%,#5c3300 50%,#c9a96e33 100%)">
+                <span class="gallery-caption">Hero Visual</span>
+              </div>
+            </div>
+            <div class="gallery-item" data-index="1" style="--g:linear-gradient(135deg,#1a0e00,#7a4800,#e8a84044)">
+              <div class="gallery-img-inner" style="background:linear-gradient(160deg,#120c00 0%,#4a2800 40%,#d4841033 100%)">
+                <span class="gallery-caption">OOH Billboard</span>
+              </div>
+            </div>
+            <div class="gallery-item" data-index="2" style="--g:linear-gradient(135deg,#0e0a00,#503000,#b8902044)">
+              <div class="gallery-img-inner" style="background:linear-gradient(120deg,#0e0900 0%,#3d2000 40%,#c07810 20%,#00000044 100%)">
+                <span class="gallery-caption">Social Assets</span>
+              </div>
+            </div>
+            <div class="gallery-item" data-index="3" style="--g:linear-gradient(135deg,#150f00,#664000,#d4a03044)">
+              <div class="gallery-img-inner" style="background:linear-gradient(145deg,#100a00 0%,#4a2d00 50%,#b07020 30%,#00000055 100%)">
+                <span class="gallery-caption">Print Media</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-block reveal-right delay-3">
+          <div class="chart-header">
+            <span class="chart-title">Performance Over Time</span>
+            <div class="chart-legend">
+              <span class="legend-dot" style="background:#c9a96e"></span><span>Reach (K)</span>
+              <span class="legend-dot" style="background:#e8d5b0"></span><span>Conversion (%)</span>
+            </div>
+          </div>
+          <canvas class="chart-canvas" id="chart-1" width="420" height="180"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= ROOM 2: SOCIAL MEDIA ======= -->
+    <section class="room room-project" id="room-2" data-room="2"
+      data-color="#8b6fcb"
+      data-chart-labels="Week1,Week2,Week3,Week4,Week5,Week6"
+      data-chart-values="12,28,55,89,140,200"
+      data-chart-values2="2.1,3.4,5.2,7.8,9.1,11.4"
+      data-gallery-theme="violet">
+      <div class="room-bg-image bg-room2"></div>
+      <div class="room-overlay"></div>
+      <div class="room-glow" style="--glow-color:#8b6fcb"></div>
+
+      <div class="project-panel-left">
+        <div class="project-meta">
+          <div class="project-index">02</div>
+          <div class="project-category reveal-left delay-1">Social Media</div>
+        </div>
+        <div class="project-content">
+          <h2 class="project-title reveal-up delay-1">Social Media<br><span class="italic">Rebranding</span></h2>
+          <p class="project-vn reveal-up delay-2">Xây dựng lại bản sắc mạng xã hội</p>
+          <div class="project-divider reveal-up delay-2"></div>
+          <p class="project-desc reveal-up delay-3">Redesigned [Brand]'s entire social presence — tone of voice, visual identity, content pillars, and community strategy. Turned a dormant page into a vibrant brand community.</p>
+          <div class="project-stats reveal-up delay-4">
+            <div class="stat-item"><span class="stat-number">+340%</span><span class="stat-label">Engagement</span></div>
+            <div class="stat-item"><span class="stat-number">50K</span><span class="stat-label">New followers</span></div>
+            <div class="stat-item"><span class="stat-number">6 mo</span><span class="stat-label">Timeline</span></div>
+          </div>
+          <div class="project-tags reveal-up delay-4">
+            <span class="tag">Social Media</span><span class="tag">Content</span><span class="tag">Community</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-panel-right">
+        <div class="gallery-block reveal-right delay-2">
+          <div class="gallery-label">Creative Gallery</div>
+          <div class="gallery-strip">
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(135deg,#0c0820 0%,#3d2080 50%,#8b6fcb33 100%)"><span class="gallery-caption">Feed Design</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(160deg,#080614 0%,#2a1460 40%,#7050c033 100%)"><span class="gallery-caption">Story Series</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(120deg,#0a0718 0%,#321878 40%,#9060d033 100%)"><span class="gallery-caption">Reels Template</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(145deg,#0b0818 0%,#3a1a70 50%,#8060b833 100%)"><span class="gallery-caption">Brand Guideline</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-block reveal-right delay-3">
+          <div class="chart-header">
+            <span class="chart-title">Follower & Engagement Growth</span>
+            <div class="chart-legend">
+              <span class="legend-dot" style="background:#8b6fcb"></span><span>Followers (K)</span>
+              <span class="legend-dot" style="background:#c4b0e8"></span><span>Eng. Rate (%)</span>
+            </div>
+          </div>
+          <canvas class="chart-canvas" id="chart-2" width="420" height="180"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= ROOM 3: BRAND IDENTITY ======= -->
+    <section class="room room-project" id="room-3" data-room="3"
+      data-color="#4ecdc4"
+      data-chart-labels="Q1,Q2,Q3,Q4"
+      data-chart-values="30,60,80,95"
+      data-chart-values2="1,3,5,5"
+      data-gallery-theme="teal">
+      <div class="room-bg-image bg-room3"></div>
+      <div class="room-overlay"></div>
+      <div class="room-glow" style="--glow-color:#4ecdc4"></div>
+
+      <div class="project-panel-left">
+        <div class="project-meta">
+          <div class="project-index">03</div>
+          <div class="project-category reveal-left delay-1">Brand Identity</div>
+        </div>
+        <div class="project-content">
+          <h2 class="project-title reveal-up delay-1">Brand Identity<br><span class="italic">& Positioning</span></h2>
+          <p class="project-vn reveal-up delay-2">Xây dựng nhận diện & định vị thương hiệu</p>
+          <div class="project-divider reveal-up delay-2"></div>
+          <p class="project-desc reveal-up delay-3">Crafted the complete brand identity for [Startup Name] from the ground up — naming, visual language, tone of voice, and go-to-market positioning strategy for Series A launch.</p>
+          <div class="project-stats reveal-up delay-4">
+            <div class="stat-item"><span class="stat-number">A+</span><span class="stat-label">Brand audit</span></div>
+            <div class="stat-item"><span class="stat-number">5</span><span class="stat-label">Markets entered</span></div>
+            <div class="stat-item"><span class="stat-number">4 mo</span><span class="stat-label">Timeline</span></div>
+          </div>
+          <div class="project-tags reveal-up delay-4">
+            <span class="tag">Branding</span><span class="tag">Positioning</span><span class="tag">GTM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-panel-right">
+        <div class="gallery-block reveal-right delay-2">
+          <div class="gallery-label">Brand Assets Gallery</div>
+          <div class="gallery-strip">
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(135deg,#040e0d 0%,#104a44 50%,#4ecdc433 100%)"><span class="gallery-caption">Logo System</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(160deg,#050d0c 0%,#0d3d38 40%,#3ab8b033 100%)"><span class="gallery-caption">Color Palette</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(120deg,#040f0e 0%,#124f48 40%,#55d8d033 100%)"><span class="gallery-caption">Typography</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(145deg,#050e0d 0%,#0f4540 50%,#45c0b833 100%)"><span class="gallery-caption">Brand Book</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-block reveal-right delay-3">
+          <div class="chart-header">
+            <span class="chart-title">Market Awareness by Quarter</span>
+            <div class="chart-legend">
+              <span class="legend-dot" style="background:#4ecdc4"></span><span>Brand Recall (%)</span>
+              <span class="legend-dot" style="background:#a0e8e4"></span><span>Markets</span>
+            </div>
+          </div>
+          <canvas class="chart-canvas" id="chart-3" width="420" height="180"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= ROOM 4: CONTENT MARKETING ======= -->
+    <section class="room room-project" id="room-4" data-room="4"
+      data-color="#e8a87c"
+      data-chart-labels="M1,M2,M3,M4,M5,M6,M7,M8"
+      data-chart-values="10,22,38,55,70,88,105,120"
+      data-chart-values2="100,180,290,410,600,850,1100,1400"
+      data-gallery-theme="amber">
+      <div class="room-bg-image bg-room4"></div>
+      <div class="room-overlay"></div>
+      <div class="room-glow" style="--glow-color:#e8a87c"></div>
+
+      <div class="project-panel-left">
+        <div class="project-meta">
+          <div class="project-index">04</div>
+          <div class="project-category reveal-left delay-1">Content Marketing</div>
+        </div>
+        <div class="project-content">
+          <h2 class="project-title reveal-up delay-1">Content<br><span class="italic">Ecosystem</span></h2>
+          <p class="project-vn reveal-up delay-2">Hệ sinh thái nội dung</p>
+          <div class="project-divider reveal-up delay-2"></div>
+          <p class="project-desc reveal-up delay-3">Built an end-to-end content strategy and production pipeline for [Brand] — editorial calendar, SEO framework, video series, and newsletter — turning content into a revenue driver.</p>
+          <div class="project-stats reveal-up delay-4">
+            <div class="stat-item"><span class="stat-number">120+</span><span class="stat-label">Pieces published</span></div>
+            <div class="stat-item"><span class="stat-number">3×</span><span class="stat-label">Organic traffic</span></div>
+            <div class="stat-item"><span class="stat-number">12 mo</span><span class="stat-label">Timeline</span></div>
+          </div>
+          <div class="project-tags reveal-up delay-4">
+            <span class="tag">Content</span><span class="tag">SEO</span><span class="tag">Editorial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-panel-right">
+        <div class="gallery-block reveal-right delay-2">
+          <div class="gallery-label">Content Gallery</div>
+          <div class="gallery-strip">
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(135deg,#100800 0%,#5c3010 50%,#e8a87c33 100%)"><span class="gallery-caption">Article Series</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(160deg,#0e0700 0%,#4e2808 40%,#d4904033 100%)"><span class="gallery-caption">Video Content</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(120deg,#0f0800 0%,#543012 40%,#dc9c4033 100%)"><span class="gallery-caption">Newsletter</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(145deg,#0d0700 0%,#4a2a0a 50%,#c8883833 100%)"><span class="gallery-caption">Infographics</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-block reveal-right delay-3">
+          <div class="chart-header">
+            <span class="chart-title">Content Output & Traffic Growth</span>
+            <div class="chart-legend">
+              <span class="legend-dot" style="background:#e8a87c"></span><span>Pieces published</span>
+              <span class="legend-dot" style="background:#f4d0b0"></span><span>Monthly visitors</span>
+            </div>
+          </div>
+          <canvas class="chart-canvas" id="chart-4" width="420" height="180"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= ROOM 5: GROWTH MARKETING ======= -->
+    <section class="room room-project" id="room-5" data-room="5"
+      data-color="#f7c59f"
+      data-chart-labels="M1,M2,M3,M4,M5,M6,M7,M8"
+      data-chart-values="100,88,76,65,58,50,45,42"
+      data-chart-values2="0.8,1.1,1.4,1.7,2.0,2.4,2.6,2.8"
+      data-gallery-theme="peach">
+      <div class="room-bg-image bg-room5"></div>
+      <div class="room-overlay"></div>
+      <div class="room-glow" style="--glow-color:#f7c59f"></div>
+
+      <div class="project-panel-left">
+        <div class="project-meta">
+          <div class="project-index">05</div>
+          <div class="project-category reveal-left delay-1">Growth Marketing</div>
+        </div>
+        <div class="project-content">
+          <h2 class="project-title reveal-up delay-1">Growth<br><span class="italic">& Performance</span></h2>
+          <p class="project-vn reveal-up delay-2">Tăng trưởng & hiệu suất</p>
+          <div class="project-divider reveal-up delay-2"></div>
+          <p class="project-desc reveal-up delay-3">Led performance marketing and growth experiments for [Product] — funnel optimization, A/B testing, paid acquisition, and retention loops that compounded over time.</p>
+          <div class="project-stats reveal-up delay-4">
+            <div class="stat-item"><span class="stat-number">40%</span><span class="stat-label">CAC reduction</span></div>
+            <div class="stat-item"><span class="stat-number">2.8×</span><span class="stat-label">ROAS</span></div>
+            <div class="stat-item"><span class="stat-number">8 mo</span><span class="stat-label">Timeline</span></div>
+          </div>
+          <div class="project-tags reveal-up delay-4">
+            <span class="tag">Paid Ads</span><span class="tag">A/B Testing</span><span class="tag">Retention</span>
+          </div>
+        </div>
+
+        <div class="closing-block reveal-up delay-5">
+          <p class="closing-vn">Hãy để lại dấu vết tiếp theo — cùng nhau.</p>
+          <a href="mailto:your@email.com" class="contact-link" id="contact-link">
+            Get in touch
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-panel-right">
+        <div class="gallery-block reveal-right delay-2">
+          <div class="gallery-label">Performance Gallery</div>
+          <div class="gallery-strip">
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(135deg,#110c08 0%,#5a3820 50%,#f7c59f33 100%)"><span class="gallery-caption">Ad Creatives</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(160deg,#0f0a06 0%,#503018 40%,#e8b07033 100%)"><span class="gallery-caption">Landing Pages</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(120deg,#100c08 0%,#5c3c20 40%,#f0bc8833 100%)"><span class="gallery-caption">Email Flows</span></div>
+            </div>
+            <div class="gallery-item">
+              <div class="gallery-img-inner" style="background:linear-gradient(145deg,#0e0a06 0%,#4c3218 50%,#dca87033 100%)"><span class="gallery-caption">A/B Reports</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-block reveal-right delay-3">
+          <div class="chart-header">
+            <span class="chart-title">CAC Reduction & ROAS Improvement</span>
+            <div class="chart-legend">
+              <span class="legend-dot" style="background:#f7c59f"></span><span>CAC (indexed)</span>
+              <span class="legend-dot" style="background:#ffe0c4"></span><span>ROAS (×)</span>
+            </div>
+          </div>
+          <canvas class="chart-canvas" id="chart-5" width="420" height="180"></canvas>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+    <div class="lightbox-inner" id="lightbox-inner"></div>
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+  <!-- TRANSITION OVERLAY -->
+  <div class="transition-overlay" id="transition-overlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
